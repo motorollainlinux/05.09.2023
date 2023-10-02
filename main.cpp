@@ -15,23 +15,30 @@ void EnterResult(int* Arr) {
     void Math(int num1, int num2, int* result) {
     int res = num1 + num2;
     std::string Str = "";
-    Str = res;
+    Str = std::to_string(res);
     for(int i = 0; i < Str.length(); i++) {
-        result[i] = (int)Str[i];
+        result[i] = Str[i] - '0';
     }
     EnterResult(result);
     res = num1 - num2;
     Str = "";
-    Str = res;
+    Str = std::to_string(res);
     for(int i = 0; i < Str.length(); i++) {
-        result[i] = (int)Str[i];
+        result[i] = Str[i] - '0';
     }
     EnterResult(result);
     res = num1 * num2;
     Str = "";
-    Str = res;
+    Str = std::to_string(res);
     for(int i = 0; i < Str.length(); i++) {
-        result[i] = (int)Str[i];
+        result[i] = Str[i] - '0';
+    }
+    EnterResult(result);
+    res = num1 / num2;
+    Str = "";
+    Str = std::to_string(res);
+    for(int i = 0; i < Str.length(); i++) {
+        result[i] = Str[i] - '0';
     }
     EnterResult(result);
 }
@@ -40,17 +47,18 @@ void Nums(int* Arr1, int* Arr2, int* result) {
     int num2 = 0;
     std::string Str = "";
     for(int i = 0; Arr1[i] != 0; i++) {
-        Str += Arr1[i];
+        //cout << "worck...\n";
+        Str += std::to_string(Arr1[i]);
     }
+    //cout << "tess: " << Str << "\n";
+    num1 = std::stoi(Str);
+    Str = "";
+    for(int i = 0; Arr2[i] != 0; i++) {
+        Str += std::to_string(Arr2[i]);
+    }
+    num2 = std::stoi(Str);
     Math(num1, num2, result);
 }
-//     num1 = std::stoi(Str);
-//     Str = "";
-//     for(int i = 0; Arr2[i] != 0; i++) {
-//         Str += Arr2[i];
-//     }
-//     num2 = std::stoi(Str);
-// }
 
 void UserEnter(int* Arr) {
    int CountNum = 0;
@@ -82,14 +90,17 @@ void UserEnter(int* Arr) {
        Arr[i] = 0;
    }
 }
-
-
 int main() {
     int Arr1[100];
     int Arr2[100];
     int ArrResult[101];
+    for(int i = 0; i < 101; i++) {
+        ArrResult[i] = 0;
+    }
     UserEnter(Arr1);
     UserEnter(Arr2);
+    //cout << "tess1: ";
+    //EnterResult(Arr1);
+    //EnterResult(Arr2);
     Nums(Arr1, Arr2, ArrResult);
 }
-
